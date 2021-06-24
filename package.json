@@ -1,6 +1,6 @@
 {
   "name": "pagination-component",
-  "version": "0.1.6",
+  "version": "0.1.0",
   "private": false,
   "scripts": {
     "build": "rollup -c",
