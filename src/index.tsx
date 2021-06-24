@@ -1,5 +1,9 @@
 import React from "react";
 
-export default function Pagination(): JSX.Element {
-  return <h1>Hello World!</h1>;
+interface PaginationProps {
+  pageCount: number;
+}
+
+export default function Pagination({ pageCount }: PaginationProps): JSX.Element {
+  return <h1>{`${pageCount} pages`}</h1>;
 }
