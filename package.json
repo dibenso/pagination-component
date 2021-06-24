@@ -1,0 +1,75 @@
+{
+  "name": "pagination-component",
+  "version": "0.1.6",
+  "private": false,
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w",
+    "lint": "eslint . --ext .js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": ">= 17.0.0 < 2",
+    "react-dom": ">= 17.0.0 < 2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "^6.0.0",
+    "prettier": "^2.3.1",
+    "pretty-quick": "^3.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.52.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.1.2"
+  },
+  "description": "A React component that provides pagination utilities",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dibenso/pagination-component.git"
+  },
+  "keywords": [
+    "pagination",
+    "react",
+    "component"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "dibenso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dibenso/pagination-component/issues"
+  },
+  "homepage": "https://github.com/dibenso/pagination-component#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
