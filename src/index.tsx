@@ -1,9 +1,35 @@
 import React from "react";
+import { range } from "./util";
 
-interface PaginationProps {
+export interface PaginationProps {
+  page: number;
   pageCount: number;
+  containerStyle?: Record<string, unknown>;
+  pageStyle?: Record<string, unknown>;
 }
 
-export default function Pagination({ pageCount }: PaginationProps): JSX.Element {
-  return <h1>{`${pageCount} pages`}</h1>;
-}
+const defaultProps = {
+  containerStyle: {},
+  pageStyle: {}
+};
+
+const Pagination: React.FunctionComponent<PaginationProps> = ({
+  page,
+  pageCount,
+  containerStyle,
+  pageStyle
+}: PaginationProps) => {
+  if (page > pageCount) return null;
+
+  return (
+    <div style={containerStyle || defaultProps.containerStyle}>
+      {range(pageCount).map((pageNumber, index) => (
+        <p key={index} style={pageStyle || defaultProps.pageStyle}>
+          {page + index}
+        </p>
+      ))}
+    </div>
+  );
+};
+
+export default Pagination;
