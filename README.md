@@ -1,4 +1,4 @@
-# pagination-component ![pagination-component build](https://github.com/dibenso/pagination-component/actions/workflows/node.js.yml/badge.svg)
+# pagination-component ![npm](https://img.shields.io/npm/v/pagination-component) ![pagination-component build](https://github.com/dibenso/pagination-component/actions/workflows/node.js.yml/badge.svg)
 A React component that provides pagination utilities     
 
 ## Contributing
