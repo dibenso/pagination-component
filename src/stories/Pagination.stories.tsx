@@ -47,7 +47,8 @@ const children: React.FunctionComponent<PaginationRenderProps> = ({
 export const BasicPagination = Template.bind({});
 BasicPagination.args = {
   initialPage: 1,
-  pageCount: 10,
+  pageCount: 1024,
+  show: 10,
   onChange: page => console.log(`Going to page ${page}`),
   children
 };

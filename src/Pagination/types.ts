@@ -78,7 +78,7 @@ export type PaginationProps = {
   pageCount: number;
   /**
    * show: number of pages to display at once.
-   * defaults to pageCount.
+   * defaults to 10
    */
   show?: number;
   /**

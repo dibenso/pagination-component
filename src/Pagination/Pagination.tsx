@@ -1,10 +1,11 @@
 import React from "react";
-import { range } from "../util";
+import { pagingRange } from "../util";
 import { PaginationProps, SetPageOptions } from "./types";
 
 const Pagination: React.FunctionComponent<PaginationProps> = ({
   initialPage = 1,
   pageCount = initialPage,
+  show = 10,
   onChange,
   children
 }: PaginationProps) => {
@@ -66,7 +67,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
 
   return (
     <>
-      {range(1, pageCount).map((page, index) =>
+      {pagingRange(currentPage, { total: pageCount, length: show }).map((page, index) =>
         children({ setPage, page, index, currentPage, isCurrentPage: page === currentPage })
       )}
     </>
