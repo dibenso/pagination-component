@@ -1,26 +1,6 @@
 import React from "react";
 import { range } from "../util";
-
-export interface SetPageOptions {
-  next?: boolean;
-  prev?: boolean;
-  first?: boolean;
-  last?: boolean;
-  page?: number;
-}
-
-export interface PaginationRenderProps {
-  setPage: (options: SetPageOptions) => void;
-  page: number;
-  index: number;
-}
-
-export interface PaginationProps {
-  initialPage: number;
-  pageCount: number;
-  onChange: (page: number) => void;
-  children: (renderProps: PaginationRenderProps) => React.Component;
-}
+import { PaginationProps, SetPageOptions } from "./types";
 
 const Pagination: React.FunctionComponent<PaginationProps> = ({
   initialPage,

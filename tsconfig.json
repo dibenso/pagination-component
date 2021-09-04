@@ -22,7 +22,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/index.ts"
   ],
   "exclude": [
     "src/stories",
