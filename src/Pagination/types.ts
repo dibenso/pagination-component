@@ -1,16 +1,65 @@
+/**
+ * SetPageOptions: Options passed to the `setPage` callback of PaginationRenderProps.
+ */
 export type SetPageOptions = {
+  /**
+   * next: paginate to the next page.
+   */
   next?: boolean;
+  /**
+   * prev: paginate to the previous page.
+   */
   prev?: boolean;
+  /**
+   * first: paginate to the first page.
+   */
   first?: boolean;
+  /**
+   * last: paginate to the last page.
+   */
   last?: boolean;
+  /**
+   * page: paginate to a specified page.
+   */
   page?: number;
 };
 
+/**
+ * PaginationRenderProps: render props (children) for Pagination component.
+ *
+ * Check the `children` property of PaginationProps for more information.
+ */
 export type PaginationRenderProps = {
+  /**
+   * setPage: Callback used to set the current page.
+   *
+   * Examples:
+   * setPage({ next: true })      // set current page to next page
+   *
+   * setPage({ prev: true })      // set current page to previous page
+   *
+   * setPage({ first: true })     // set current page to first page
+   *
+   * setPage({ last: true })      // set current page to last page
+   *
+   * setPage({ page: 4 })         // set current page to 4th page
+   */
   setPage: (options: SetPageOptions) => void;
+  /**
+   * page: Indicates which page is currently being rendered.
+   */
   page: number;
+  /**
+   * index: Indicates the index of the page that is currently being rendered.
+   */
   index: number;
+  /**
+   * currentPage: Indicates the active page in pagination.
+   */
   currentPage: number;
+  /**
+   * isCurrentPage: Indicates if the current page being rendered is the active page.
+   */
   isCurrentPage: boolean;
 };
 
