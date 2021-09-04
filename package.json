@@ -2,10 +2,16 @@
   "name": "pagination-component",
   "version": "0.2.0",
   "private": false,
+  "prepublish": "tsc",
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "lint": "eslint . --ext .js",
+    "prepublishOnly": "npm run build",
+    "build:dev": "rollup -c rollup/rollup.config.dev.js -m",
+    "build:umd": "rollup -c rollup/rollup.config.umd.js",
+    "build:cjs": "rollup -c rollup/rollup.config.cjs.js",
+    "build:es": "rollup -c rollup/rollup.config.es.js",
+    "build": "rimraf dist/* && npm run build:dev && npm run build:cjs && npm run build:umd && npm run build:es",
+    "start": "npm run build:dev -- -w",
+    "lint": "eslint . --ext .ts,.tsx && eslint . --ext .js --config .eslintrc.json",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -52,11 +58,18 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.52.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-visualizer": "^5.5.2",
     "typescript": "^4.1.2"
   },
   "description": "A React component that provides pagination utilities",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "browser": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dibenso/pagination-component.git"
@@ -64,7 +77,8 @@
   "keywords": [
     "pagination",
     "react",
-    "component"
+    "component",
+    "pagination-component"
   ],
   "files": [
     "dist"
