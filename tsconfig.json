@@ -21,13 +21,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src/index.ts"
-  ],
-  "exclude": [
-    "src/stories",
+  "include": ["src/**/*"],
+	"exclude": [
     "node_modules",
-    "dist",
-    "rollup"
+		"dist",
+    "src/stories"
   ]
 }

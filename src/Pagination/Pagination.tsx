@@ -64,7 +64,13 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
     onChange(newPage);
   };
 
-  return <>{range(1, pageCount, 1, true).map((page, index) => children({ setPage, page, index }))}</>;
+  return (
+    <>
+      {range(1, pageCount).map((page, index) =>
+        children({ setPage, page, index, currentPage, isCurrentPage: page === currentPage })
+      )}
+    </>
+  );
 };
 
 export default Pagination;

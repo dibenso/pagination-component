@@ -10,6 +10,8 @@ export type PaginationRenderProps = {
   setPage: (options: SetPageOptions) => void;
   page: number;
   index: number;
+  currentPage: number;
+  isCurrentPage: boolean;
 };
 
 export type PaginationProps = {
