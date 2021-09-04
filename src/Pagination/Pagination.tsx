@@ -3,8 +3,8 @@ import { range } from "../util";
 import { PaginationProps, SetPageOptions } from "./types";
 
 const Pagination: React.FunctionComponent<PaginationProps> = ({
-  initialPage,
-  pageCount,
+  initialPage = 1,
+  pageCount = initialPage,
   onChange,
   children
 }: PaginationProps) => {
@@ -61,7 +61,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
     else if (last) newPage = setCurrentPageToLast();
     else if (page) newPage = setCurrentPageToPage(page);
 
-    onChange(newPage);
+    if (onChange) onChange(newPage);
   };
 
   return (
