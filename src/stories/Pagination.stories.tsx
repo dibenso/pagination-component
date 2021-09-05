@@ -30,25 +30,43 @@ const children: React.FunctionComponent<PaginationRenderProps> = ({
   index,
   currentPage,
   isCurrentPage,
+  isPrev,
+  isNext,
   setPage
-}) => (
-  <div
-    className="item"
-    key={index}
-    style={{ backgroundColor: isCurrentPage ? "yellow" : "white" }}
-    onClick={() => {
-      console.log(`Navigating from page ${currentPage} to page ${page}`);
-      setPage({ page });
-    }}>
-    <h1>{page}</h1>
-  </div>
-);
+}) => {
+  if (isPrev)
+    return (
+      <div className="item" onClick={() => setPage({ prev: true })}>
+        Previous
+      </div>
+    );
+
+  if (isNext)
+    return (
+      <div className="item" onClick={() => setPage({ next: true })}>
+        Next
+      </div>
+    );
+
+  return (
+    <div
+      className="item"
+      key={index}
+      style={{ backgroundColor: isCurrentPage ? "yellow" : "white" }}
+      onClick={() => {
+        console.log(`Navigating from page ${currentPage} to page ${page}`);
+        setPage({ page });
+      }}>
+      <h1>{page}</h1>
+    </div>
+  );
+};
 
 export const BasicPagination = Template.bind({});
 BasicPagination.args = {
   initialPage: 1,
   pageCount: 1024,
   show: 10,
-  onChange: page => console.log(`Going to page ${page}`),
+  onChange: (page: number) => console.log(`Going to page ${page}`),
   children
 };

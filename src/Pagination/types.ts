@@ -61,6 +61,16 @@ export type PaginationRenderProps = {
    * isCurrentPage: Indicates if the current page being rendered is the active page.
    */
   isCurrentPage: boolean;
+  /**
+   * isPrev: Indicates if the current page being rendered should be treated
+   * as a control to go to the previous page.
+   */
+  isPrev: boolean;
+  /**
+   * isNext: Indicates if the current page being rendered should be treated
+   * as a control to go to the next page.
+   */
+  isNext: boolean;
 };
 
 /**

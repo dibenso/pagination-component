@@ -1,4 +1,5 @@
 import React from "react";
+import { PaginationRenderProps } from "..";
 import { pagingRange } from "../util";
 import { PaginationProps, SetPageOptions } from "./types";
 
@@ -64,12 +65,23 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
 
     if (onChange) onChange(newPage);
   };
+  const renderProps = (): PaginationRenderProps => ({
+    setPage,
+    page: 0,
+    index: 0,
+    currentPage,
+    isCurrentPage: false,
+    isPrev: false,
+    isNext: false
+  });
 
   return (
     <>
+      {children({ ...renderProps(), isPrev: true })}
       {pagingRange(currentPage, { total: pageCount, length: show }).map((page, index) =>
-        children({ setPage, page, index, currentPage, isCurrentPage: page === currentPage })
+        children({ ...renderProps(), setPage, page, index, currentPage, isCurrentPage: page === currentPage })
       )}
+      {children({ ...renderProps(), isNext: true })}
     </>
   );
 };
