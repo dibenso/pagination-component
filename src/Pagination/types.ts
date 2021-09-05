@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /**
  * SetPageOptions: Options passed to the `setPage` callback of PaginationRenderProps.
  */
@@ -117,5 +119,5 @@ export type PaginationProps = {
       </div>
     );
    */
-  children: (renderProps: PaginationRenderProps) => React.Component;
+  children: (renderProps: PaginationRenderProps) => ReactNode;
 };
