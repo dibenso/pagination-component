@@ -65,6 +65,8 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
 
     if (onChange) onChange(newPage);
   };
+  const isFirstPage = () => currentPage === 1;
+  const isLastPage = () => currentPage === pageCount;
   const renderProps = (): PaginationRenderProps => ({
     setPage,
     page: 0,
@@ -77,11 +79,11 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({
 
   return (
     <>
-      {children({ ...renderProps(), isPrev: true })}
+      {!isFirstPage() && children({ ...renderProps(), isPrev: true })}
       {pagingRange(currentPage, { total: pageCount, length: show }).map((page, index) =>
         children({ ...renderProps(), setPage, page, index, currentPage, isCurrentPage: page === currentPage })
       )}
-      {children({ ...renderProps(), isNext: true })}
+      {!isLastPage() && children({ ...renderProps(), isNext: true })}
     </>
   );
 };
