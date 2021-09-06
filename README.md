@@ -36,33 +36,35 @@ const Paginator = () => (
   <div style={containerStyle}>
     <Pagination initialPage={1} show={10} pageCount={1024} onChange={page => console.log(page)}>
       {({ setPage, page, index, currentPage, isPrev, isNext, isCurrentPage }) => {
-        {
-          if (isPrev) return <div onClick={() => setPage({ prev: true })}>Previous</div>;
-
-          if (isNext)
-            return (
-              <div style={itemStyle} onClick={() => setPage({ next: true })}>
-                Next
-              </div>
-            );
-
+        if (isPrev)
           return (
-            <div
-              key={index}
-              style={{ ...itemStyle, backgroundColor: isCurrentPage ? "yellow" : "white" }}
-              onClick={() => {
-                console.log(`Navigating from page ${currentPage} to page ${page}`);
-                setPage({ page });
-              }}>
-              <h1>{page}</h1>
+            <div style={itemStyle} onClick={() => setPage({ prev: true })}>
+              Previous
             </div>
           );
-        }
+
+        if (isNext)
+          return (
+            <div style={itemStyle} onClick={() => setPage({ next: true })}>
+              Next
+            </div>
+          );
+
+        return (
+          <div
+            key={index}
+            style={{ ...itemStyle, backgroundColor: isCurrentPage ? "yellow" : "white" }}
+            onClick={() => {
+              console.log(`Navigating from page ${currentPage} to page ${page}`);
+              setPage({ page });
+            }}>
+            <h1>{page}</h1>
+          </div>
+        );
       }}
     </Pagination>
   </div>
 );
-
 ```
 
 ## Pagination Props:
