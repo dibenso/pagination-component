@@ -7,6 +7,12 @@ const defaultProps = {
   show: 10,
   pageCount: 1024
 };
+const classNames = {
+  PREV: "prevControl",
+  NEXT: "nextControl",
+  PAGE: "pageControl",
+  CURRENT: "currentControl"
+};
 const paginationComponent = ({ initialPage, show, pageCount } = defaultProps) => (
   <div>
     <Pagination initialPage={initialPage} show={show} pageCount={pageCount} onChange={page => console.log(page)}>
@@ -14,21 +20,21 @@ const paginationComponent = ({ initialPage, show, pageCount } = defaultProps) =>
         {
           if (isPrev)
             return (
-              <div className="prevControl" onClick={() => setPage({ prev: true })}>
+              <div className={classNames.PREV} onClick={() => setPage({ prev: true })}>
                 Previous
               </div>
             );
 
           if (isNext)
             return (
-              <div className="nextControl" onClick={() => setPage({ next: true })}>
+              <div className={classNames.NEXT} onClick={() => setPage({ next: true })}>
                 Next
               </div>
             );
 
           return (
             <div
-              className="pageControl"
+              className={isCurrentPage ? `${classNames.PAGE} ${classNames.CURRENT}` : classNames.PAGE}
               key={index}
               style={{ backgroundColor: isCurrentPage ? "yellow" : "white" }}
               onClick={() => {
@@ -63,5 +69,30 @@ describe("Pagination", () => {
     const pagination = mount(paginationComponent({ ...defaultProps, initialPage: defaultProps.pageCount }));
 
     expect(pagination.find("div.nextControl")).toHaveLength(0);
+  });
+
+  it("should update the current page when a control is fired", () => {
+    const pagination = mount(paginationComponent());
+
+    pagination.find("div.pageControl").at(4).simulate("click");
+
+    expect(pagination.find("div.pageControl").at(0).hasClass(classNames.CURRENT)).toBe(false);
+    expect(pagination.find("div.pageControl").at(4).hasClass(classNames.CURRENT)).toBe(true);
+  });
+
+  it("should update the current page to the previous page when the previous control is fired", () => {
+    const pagination = mount(paginationComponent({ ...defaultProps, initialPage: 2 }));
+
+    pagination.find("div.prevControl").first().simulate("click");
+    expect(pagination.find("div.pageControl").at(1).hasClass(classNames.CURRENT)).toBe(false);
+    expect(pagination.find("div.pageControl").at(0).hasClass(classNames.CURRENT)).toBe(true);
+  });
+
+  it("should update the current page to the next page when the next control is fired", () => {
+    const pagination = mount(paginationComponent());
+
+    pagination.find("div.nextControl").first().simulate("click");
+    expect(pagination.find("div.pageControl").at(0).hasClass(classNames.CURRENT)).toBe(false);
+    expect(pagination.find("div.pageControl").at(1).hasClass(classNames.CURRENT)).toBe(true);
   });
 });
