@@ -14,7 +14,7 @@
     "lint": "eslint . --ext .ts,.tsx && eslint . --ext .js --config .eslintrc.json",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o docs -s ./src/stories/assets"
   },
   "browserslist": {
     "production": [
