@@ -13,8 +13,8 @@
     "start": "npm run build:dev -- -w",
     "lint": "eslint . --ext .ts,.tsx && eslint . --ext .js --config .eslintrc.json",
     "test": "jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs-build -s ./src/stories/assets"
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "browserslist": {
     "production": [
