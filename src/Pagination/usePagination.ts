@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { PaginationProps, SetPageOptions, PaginationHook } from "./types";
 
-export function usePagination({ initialPage = 1, pageCount = initialPage, onChange }: PaginationProps): PaginationHook {
+export default function usePagination({
+  initialPage = 1,
+  pageCount = initialPage,
+  onChange
+}: PaginationProps): PaginationHook {
   if (initialPage > pageCount) throw new Error("`initialPage` prop must be less than or equal to `pageCount` prop.");
 
   const [currentPage, setCurrentPage] = useState(initialPage);

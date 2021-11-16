@@ -1,7 +1,7 @@
 import React from "react";
 import { pagingRange } from "../util";
 import { PaginationProps } from "./types";
-import { usePagination } from "./usePagination";
+import usePagination from "./usePagination";
 
 const Pagination: React.FunctionComponent<PaginationProps> = ({
   initialPage = 1,
