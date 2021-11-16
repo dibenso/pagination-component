@@ -121,3 +121,20 @@ export type PaginationProps = {
    */
   children: (renderProps: PaginationRenderProps) => ReactNode;
 };
+
+/**
+ * PaginationHook: Pagination data returned from the `usePagination()` hook.
+ * TODO: extend from `PaginationRenderProps`.
+ * Refer to `PaginationRenderProps` for more on the fields in this type
+ */
+export type PaginationHook = {
+  setPage: ({ next, prev, first, last, page }: SetPageOptions) => void;
+  page: number;
+  index: number;
+  currentPage: number;
+  isCurrentPage: boolean;
+  isPrev: boolean;
+  isNext: boolean;
+  isFirstPage: () => boolean;
+  isLastPage: () => boolean;
+};
